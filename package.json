@@ -7,7 +7,7 @@
         "dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts",
         "build": "tsc",
         "start": "node backend/dist/index.js",
-        "postinstall": "prisma generate --schema=./backend/prisma/schema.prisma"
+		"postinstall": "prisma generate --schema=./backend/prisma/schema.prisma && prisma migrate deploy --schema=./backend/prisma/schema.prisma"
     },
     "type": "module",
     "keywords": [],
