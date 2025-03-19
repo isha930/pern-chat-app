@@ -4,11 +4,13 @@
     "description": "",
     "main": "backend/dist/src/index.js",
     "scripts": {
-        "dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts",
-        "build": "tsc",
-        "start": "node backend/dist/index.js",
-		"postinstall": "prisma generate --schema=./backend/prisma/schema.prisma && prisma migrate deploy --schema=./backend/prisma/schema.prisma"
-    },
+    "dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts",
+    "build": "tsc",
+    "start": "npm run prestart && node backend/dist/index.js",
+    "prestart": "prisma generate --schema=./backend/prisma/schema.prisma && prisma migrate deploy --schema=./backend/prisma/schema.prisma",
+    "postinstall": "prisma generate --schema=./backend/prisma/schema.prisma"
+},
+
     "type": "module",
     "keywords": [],
     "author": "",
