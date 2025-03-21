@@ -46,7 +46,7 @@ export const signup = async (req: Request, res: Response) => {
 		});
 
 		// 🔥 Generate JWT Token
-		generateToken(newUser.id, res);
+		await generateToken(newUser.id, res); // Add await here
 
 		// ✅ Send JSON Response
 		res.status(201).json({
@@ -88,7 +88,7 @@ export const login = async (req: Request, res: Response) => {
 		}
 
 		// 🔥 Generate JWT Token
-		generateToken(user.id, res);
+		await generateToken(user.id, res); // Add await here
 
 		// ✅ Send JSON Response
 		res.status(200).json({
