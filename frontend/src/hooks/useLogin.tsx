@@ -11,8 +11,9 @@ const useLogin = () => {
 	const login = async (username: string, password: string) => {
 		try {
 			setLoading(true);
+
 			const res = await fetch("http://localhost:5001/api/auth/login", {
-				method: "POST",
+
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ username, password }),
 				credentials: "include", // ✅ important!
@@ -21,7 +22,9 @@ const useLogin = () => {
 
 			const data = await res.json();
 
-			if (!res.ok) throw new Error(data.error);
+			if (!res.ok) {
+                throw new Error(data.error);
+            }
 			setAuthUser(data);
 		} catch (error: any) {
 			toast.error(error.message);
