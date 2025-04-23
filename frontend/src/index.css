@@ -3,11 +3,49 @@
 @tailwind utilities;
 
 body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/bg.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
+	background-color: #000; /* pure black */
+	margin: 0;
+	padding: 0;
+	overflow: hidden; /* optional: prevents scrollbars from random floats */
+	color: white; /* makes sure text (if any) is visible */
+	font-family: sans-serif;
 }
+.floating-icons {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.floating-icon {
+	position: absolute;
+	font-size: 1.5rem;
+	color: white;
+	opacity: 0.3;
+	animation-name: float;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0px) scale(1);
+		opacity: 0.3;
+	}
+	50% {
+		transform: translateY(-40px) scale(1.2);
+		opacity: 0.6;
+	}
+	100% {
+		transform: translateY(0px) scale(1);
+		opacity: 0.3;
+	}
+}
+
 
 .label-text {
 	color: white;
