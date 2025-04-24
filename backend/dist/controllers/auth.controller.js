@@ -82,10 +82,11 @@ export const login = async (req, res) => {
         // 🍪 Set token in HttpOnly cookie
         res.cookie("jwt", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
-            maxAge: 60 * 60 * 1000, // 1 hour
+            secure: process.env.NODE_ENV === "production", // Secure should be true only in production (HTTPS)
+            sameSite: "strict", // To avoid cross-site request
+            maxAge: 60 * 60 * 1000, // 1 hour expiration
         });
+        
 
         // ✅ Send user info (no token in response)
         res.status(200).json({

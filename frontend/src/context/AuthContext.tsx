@@ -32,15 +32,18 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		const fetchAuthUser = async () => {
 			try {
-				const res = await fetch("/api/auth/me", { credentials: "include" }); // Add credentials: "include"
+				const res = await fetch("/api/auth/me", {
+					method: "GET", // GET request
+					credentials: "include", // This will include the cookies (JWT) in the request
+				});
 				const data = await res.json();
 				if (!res.ok) {
 					throw new Error(data.error);
 				}
-				setAuthUser(data);
-			} catch (error: any) {
-				console.error(error);
-				toast.error(error.message);
+				setAuthUser(data); // Set the authenticated user info
+			} catch (error) {
+				console.error("Error:", error.message);
+				toast.error(error.message); // Display error to the user
 			} finally {
 				setIsLoading(false);
 			}

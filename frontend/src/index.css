@@ -47,9 +47,29 @@ body {
 }
 
 
-.label-text {
-	color: white;
+/* Make sure the text in the input field is visible */
+input {
+    color: black; /* text color */
+    background-color: #333; /* darker background for input */
+    border: 1px solid #555; /* border color */
+    border-radius: 5px; /* rounded corners for the input */
+    padding: 10px; /* some padding */
 }
+
+input::placeholder {
+    color: #aaa; /* placeholder text color */
+}
+
+input:focus {
+    border-color: #888; /* border color when the input is focused */
+    outline: none; /* remove default outline */
+}
+
+/* Additional style for the labels */
+.label-text {
+    color: black; /* ensure labels are visible on black background */
+}
+
 
 /* dark mode looking scrollbar */
 ::-webkit-scrollbar {
