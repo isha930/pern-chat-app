@@ -41,10 +41,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 					throw new Error(data.error);
 				}
 				setAuthUser(data); // Set the authenticated user info
-			} catch (error) {
-				console.error("Error:", error.message);
-				toast.error(error.message); // Display error to the user
-			} finally {
+			} catch (error: unknown) {
+				const err = error as Error;
+				console.error("Error:", err.message);
+				toast.error(err.message);
+			}
+			 finally {
 				setIsLoading(false);
 			}
 		};

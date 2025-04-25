@@ -11,7 +11,8 @@ const useLogin = () => {
 	const login = async (username: string, password: string) => {
 		try {
 			setLoading(true);
-			const res = await fetch("http://localhost:5001/api/auth/login", {
+			const res = await fetch(`${backendUrl}/api/auth/login`, {
+
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ username, password }),
