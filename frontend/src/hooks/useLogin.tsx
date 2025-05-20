@@ -7,7 +7,7 @@ const useLogin = () => {
 	const { setAuthUser } = useAuthContext();
 
 	const backendUrl = import.meta.env.VITE_BACKEND_URL;
-	console.log(backendUrl); // Dynamically set backend URL
+	// Dynamically set backend URL
 
 	const login = async (username: string, password: string) => {
 		try {
