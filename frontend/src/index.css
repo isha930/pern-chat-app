@@ -67,7 +67,7 @@ input:focus {
 
 /* Additional style for the labels */
 .label-text {
-    color: black; /* ensure labels are visible on black background */
+    color: white; /* ensure labels are visible on black background */
 }
 
 
