@@ -7,14 +7,21 @@ import dotenv from "dotenv";
 import { app, server } from "./socket/socket.js";
 import cors from "cors";
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://pern-chat-app-frontend-3byh.onrender.com"
+];
+
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://pern-chat-app-frontend-3byh.onrender.com"
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS: " + origin));
+    }
+  },
   credentials: true
 }));
-
 
 dotenv.config();
 const PORT = process.env.PORT || 5001;
