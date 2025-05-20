@@ -8,9 +8,13 @@ import { app, server } from "./socket/socket.js";
 import cors from "cors";
 
 app.use(cors({
-	origin: "http://localhost:5173", // allow frontend origin
-	credentials: true // allow cookies to be sent
+  origin: [
+    "http://localhost:5173",
+    "https://pern-chat-app-frontend-3byh.onrender.com"
+  ],
+  credentials: true
 }));
+
 
 dotenv.config();
 const PORT = process.env.PORT || 5001;
